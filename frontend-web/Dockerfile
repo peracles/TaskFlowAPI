@@ -1,15 +1,9 @@
 FROM node:24.13.0-alpine
-
-WORKDIR /app
-
 RUN npm install -g pnpm
-
-COPY package.json pnpm-lock.yaml ./
-
+WORKDIR /app
+COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install --frozen-lockfile
-
 COPY . .
-
 EXPOSE 5173
-
-CMD ["pnpm", "dev"]
+# --host es vital para que Docker permita ver la web desde fuera
+CMD ["pnpm", "dev", "--host"]

@@ -2,7 +2,7 @@ FROM node:24.13.0-alpine
 RUN npm install -g pnpm
 WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 COPY . .
-EXPOSE 3000
-CMD ["pnpm", "run", "dev"]
+EXPOSE 8081
+CMD ["pnpm", "exec", "expo", "start", "--host", "lan"]

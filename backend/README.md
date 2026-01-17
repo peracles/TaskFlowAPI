@@ -1,10 +1,12 @@
-# Backend - TaskFlow API
+# 🧠 TaskFlow API (Backend)
 
-Stack: Node.js 24.13.0, Express, JavaScript puro, PostgreSQL, Screaming Architecture
+Servicio encargado de la lógica de negocio y persistencia de datos.
 
-## Scripts
-- `pnpm start`: producción
-- `pnpm dev`: desarrollo (con nodemon)
+## 🚀 Tecnologías
+- **Node.js**
+- **Express**
+- **PostgreSQL** (vía Prisma o Sequelize, según prefieras)
+- **Nodemon** (Desarrollo)
 
-## Variables
-Ver `.env.example`
+## 🛠️ Scripts en Docker
+El contenedor está configurado para observar cambios en tiempo real. Si editas un archivo en `src/`, el servidor se reiniciará automáticamente gracias al volumen mapeado.
