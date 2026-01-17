@@ -1,27 +1,21 @@
-# React + Vite
+# 🌐 TaskFlow Web
+Interfaz de usuario de escritorio y navegador.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Tecnologías
+- **React 19**
+- **Vite**
+- **Tailwind CSS**
 
-Currently, two official plugins are available:
+## 🔧 Configuración
+Para conectar con la API, asegúrate de que la variable de entorno apunta a `http://localhost:3000`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 🖥️ TaskFlow Desktop (Tauri)
+Aplicación nativa de alto rendimiento.
 
-## React Compiler
+## ⚠️ Nota de Desarrollo
+Debido a que Tauri requiere acceso a las APIs nativas del Sistema Operativo (Windows/macOS), **no se recomienda ejecutarlo dentro de Docker para desarrollo visual**.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-# Frontend Web - TaskFlow
-
-Stack: React 19.2.3, JavaScript, Vite, Screaming Architecture adaptada
-
-## Scripts
-- `pnpm dev`: inicia servidor (puerto 5173)
-- `pnpm build`: genera versión de producción
-
-## API
-Consume desde: `VITE_API_URL`
+### Pasos para iniciar:
+1. Instalar [Rust](https://www.rust-lang.org/tools/install).
+2. Instalar dependencias: `pnpm install`.
+3. Ejecutar en modo desarrollo: `pnpm tauri dev`.

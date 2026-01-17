@@ -9,18 +9,17 @@ services:
     ports:
       - "5430:5432"
     volumes:
-      - pg/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     networks:
       - taskflow-net
 
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     env_file:
-      - ./backend/.env.docker
+      - ./backend/.env.docker # Docker usará DB_HOST=db automáticamente
     depends_on:
       - db
     networks:
@@ -32,7 +31,6 @@ services:
   frontend-web:
     build:
       context: ./frontend-web
-      dockerfile: Dockerfile
     ports:
       - "5173:5173"
     env_file:
@@ -42,9 +40,23 @@ services:
     volumes:
       - ./frontend-web:/app
       - /app/node_modules
+      - /app/src-tauri/target
+
+  frontend-mobile:
+    build:
+      context: ./frontend-mobile
+    ports:
+      - "8081:8081"
+    env_file:
+      - ./frontend-mobile/.env.docker
+    networks:
+      - taskflow-net
+    volumes:
+      - ./frontend-mobile:/app
+      - /app/node_modules
 
 volumes:
-  pgdata
+  pgdata:
 
 networks:
   taskflow-net:
