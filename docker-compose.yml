@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:18.1-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: taskflow_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: taskflow_pass
+    ports:
+      - "5430:5432"
+    volumes:
+      - pg/var/lib/postgresql/data
+    networks:
+      - taskflow-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env.docker
+    depends_on:
+      - db
+    networks:
+      - taskflow-net
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend-web:
+    build:
+      context: ./frontend-web
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./frontend-web/.env.docker
+    networks:
+      - taskflow-net
+    volumes:
+      - ./frontend-web:/app
+      - /app/node_modules
+
+volumes:
+  pgdata
+
+networks:
+  taskflow-net:
+    driver: bridge
