@@ -1,8 +1,9 @@
 # Tech Stack - TaskFlow (Enero 2026)
 
-## Local (requiere instalación manual)
-- **Flutter**: 3.38.7
-- **Dart**: 3.10.7
+## Local (instalación manual requerida)
+- **Expo CLI**: latest
+- **React Native**: latest
+- **Tauri**: Rust + WebView
 - **Git**: 2.47.1.windows.1
 
 ## Docker (gestionado automáticamente)
